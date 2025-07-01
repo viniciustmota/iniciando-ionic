@@ -8,24 +8,61 @@
           <ion-list-header>Ionic Framework 6</ion-list-header>
           <ion-note>hi&#64;Android/IOS/PWA</ion-note>
 
-          @for (itemMenu of menuCollections; track itemMenu; let i = $index) {
-            <ion-menu-toggle auto-hide="false">
-              <ion-item
-                routerDirection="root"
-                [routerLink]="[itemMenu.url]"
-                lines="none"
-                detail="false"
-                routerLinkActive="selected">
-                <ion-icon
-                  aria-hidden="true"
-                  slot="start"
-                  [ios]="itemMenu.icon + '-outline'"
-                  [md]="itemMenu.icon + '-sharp'">
-                </ion-icon>
-                <ion-label>{{ itemMenu.title }}</ion-label>
+
+          <ion-accordion-group>
+
+            <ion-accordion value="components">
+              <ion-item slot="header" color="light">
+                <ion-label>Components</ion-label>
               </ion-item>
-            </ion-menu-toggle>
-          }
+              <ion-list slot="content">
+              @for (itemMenu of menuComponentCollections; track itemMenu; let i = $index) {
+                <ion-menu-toggle auto-hide="false">
+                  <ion-item
+                    routerDirection="root"
+                    [routerLink]="[itemMenu.url]"
+                    lines="none"
+                    detail="false"
+                    routerLinkActive="selected">
+                    <ion-icon
+                      aria-hidden="true"
+                      slot="start"
+                      [ios]="itemMenu.icon + '-outline'"
+                      [md]="itemMenu.icon + '-sharp'">
+                    </ion-icon>
+                    <ion-label>{{ itemMenu.title }}</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              }
+              </ion-list>
+            </ion-accordion>
+
+            <ion-accordion value="native">
+              <ion-item slot="header" color="light">
+                <ion-label>Native</ion-label>
+              </ion-item>
+              <ion-list slot="content">
+              @for (itemMenu of menuNativeCollections; track itemMenu; let i = $index) {
+                <ion-menu-toggle auto-hide="false">
+                  <ion-item
+                    routerDirection="root"
+                    [routerLink]="[itemMenu.url]"
+                    lines="none"
+                    detail="false"
+                    routerLinkActive="selected">
+                    <ion-icon
+                      aria-hidden="true"
+                      slot="start"
+                      [ios]="itemMenu.icon + '-outline'"
+                      [md]="itemMenu.icon + '-sharp'">
+                    </ion-icon>
+                    <ion-label>{{ itemMenu.title }}</ion-label>
+                  </ion-item>
+                </ion-menu-toggle>
+              }
+              </ion-list>
+            </ion-accordion>
+            </ion-accordion-group>                 
         </ion-list>
       </ion-content>
     </ion-menu>

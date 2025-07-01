@@ -47,4 +47,12 @@ export const routes: Routes = [
     path: 'datetime',
     loadComponent: () => import('./pages/componentes/datetime/datetime.page').then( m => m.DatetimePage)
   },
+  {
+    path: 'camera',
+    loadComponent: () => import('./pages/natives/camera/camera.page').then( m => m.CameraPage)
+  },
+  {
+    path: 'flash',
+    loadComponent: () => import('./pages/natives/flash/flash.page').then( m => m.FlashPage)
+  },
 ];

@@ -1,0 +1,10 @@
+<ion-content [fullscreen]="true">
+  <h1>Meu primeiro aplicativo!!</h1>
+  <p>Feito por Vinícius Tavares Mota - 01/07/2025</p>
+  <p>Systh</p>
+  <ion-button expand="block" (click)="tirarFoto()">TIRAR FOTO</ion-button>
+
+  <ion-card [hidden]="!foto">
+    <img src="{{foto}}">
+  </ion-card>
+</ion-content>

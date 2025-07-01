@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink, IonHeader, IonButtons, IonToolbar, IonTitle, IonMenuButton } from '@ionic/angular/standalone';
+import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet, IonRouterLink, IonHeader, IonButtons, IonToolbar, IonTitle, IonMenuButton, IonAccordionGroup, IonAccordion } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { home, homeOutline, homeSharp, mailSharp, dice, diceOutline, diceSharp } from 'ionicons/icons';
 import { Router, NavigationEnd } from '@angular/router';
@@ -10,10 +10,10 @@ import { filter } from 'rxjs/operators';
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  imports: [IonTitle, IonToolbar, IonButtons, IonHeader, RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet,IonMenuButton],
+  imports: [IonAccordion, IonAccordionGroup, IonTitle, IonToolbar, IonButtons, IonHeader, RouterLink, RouterLinkActive, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterLink, IonRouterOutlet,IonMenuButton],
 })
 export class AppComponent {
-  public menuCollections = [
+  public menuComponentCollections = [
     { title: 'Home', url: 'home', icon: 'home' },
     { title: 'Alert', url: 'alert', icon: 'dice' },
     { title: 'Action Sheet', url: 'actionsheet', icon: 'dice' },
@@ -25,6 +25,12 @@ export class AppComponent {
     { title: 'Datetime', url: 'datetime', icon: 'dice' }
   ];
 
+  public menuNativeCollections = [
+    { title: 'Camera', url: 'camera', icon: 'dice' },
+    { title: 'Flash', url: 'flash', icon: 'dice' },
+
+  ];
+
   public infoPage = {title: "TituloDaPágina"}
 
   constructor(private router: Router) {
@@ -33,8 +39,8 @@ export class AppComponent {
     this.router.events.pipe(
     filter(event => event instanceof NavigationEnd)
   ).subscribe(() => {
-    const current = this.menuCollections.find(item => this.router.url.includes(item.url));
-    this.infoPage.title = current?.title || 'Ionic App';
+    const current = this.menuComponentCollections.find(item => this.router.url.includes(item.url)) || this.menuNativeCollections.find(item => this.router.url.includes(item.url));
+    this.infoPage.title = current?.title ||  'Ionic App';
   });
   }
 }
